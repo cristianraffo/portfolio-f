@@ -1,0 +1,46 @@
+.contact {
+    background: $color-primary;
+
+    &-height {
+        min-height: 30vh;
+    }
+
+    &-title {
+        color: $color-white;
+        font-size: 3em;
+        font-weight: 400;
+    }
+
+    &-subtitle {
+        color: $color-grey;
+        font-weight: 300;
+        line-height: 140%;
+        font-size: 1.6em;
+    }
+
+    &-media {        
+        margin-top: 30px;
+    }
+
+    &-icon {        
+        color: $color-white;
+        padding: 20px;
+
+        &:hover {
+            color: $color-grey;
+        }
+    }
+    
+    @media screen and (max-width: 767px) {
+        .contact {
+            &-title {
+                margin-top: 20px;
+                font-size: 1.8em;
+            }
+                
+            &-subtitle {
+                font-size: 1.2em;
+            }
+        }
+    }
+}

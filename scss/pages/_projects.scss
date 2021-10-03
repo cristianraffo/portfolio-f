@@ -1,0 +1,68 @@
+@use 'sass:math';
+
+@mixin banner {
+    display: flex;
+    flex-direction: column;
+    height: 60vh;
+}
+
+@mixin bp-medium {
+    @media (max-width: 990px) { @content; }
+  }
+
+
+@for $i from 1 to 4 {
+	.projects-h#{$i} { min-height: 50vh * $i; }
+}
+
+$font-big: 10em;
+$white: #FFFFFF;
+
+
+
+.top {    
+    background: $color-primary;
+
+    &-banner {
+        @include banner; 
+    }
+
+    &-title {
+        color: $white;
+        font-size: math.div($font-big, 2);
+        font-weight: 400;
+
+        @include bp-medium {
+            font-size: 3em;            
+        }
+    }
+    &-subtitle {
+        color: $color-grey;
+        font-size: 1.4em;
+    }
+}
+
+.projects {    
+    justify-content: space-evenly;
+    text-align: center;
+    
+
+    &-title {
+        font-size: 2em;
+
+        @include bp-medium {
+            font-size: 1.6em;
+            margin-top: 5px;
+        }
+    }
+    &-golast {       
+        @include bp-medium {
+            order: 1;
+        }
+    }
+
+    &-img {
+        border-radius: 10px;
+        box-shadow: 0 1px 5px rgba(0,0,0,.15),0 5px 30px rgba(0,0,0,.40);
+    }
+}

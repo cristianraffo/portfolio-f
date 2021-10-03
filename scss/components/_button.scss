@@ -1,0 +1,29 @@
+.btn {
+    background: transparent;
+    border: none;
+    padding: 0.8rem 2.1rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    font-size: 1.2em;
+    color: $color-white;
+    background: $color-secondary;
+    text-align: center;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    &:hover {
+        background: $color-white;
+        border: 1px solid $color-secondary;
+        color: $color-primary; 
+        transform: scale(1.1);
+        transition: all .3s ease-out;
+    }    
+
+    &--black:hover {
+        background-color: $color-primary;        
+        color: $color-white;   
+    }
+    &--grey:hover {
+        background-color: $color-light-grey;        
+    }
+}

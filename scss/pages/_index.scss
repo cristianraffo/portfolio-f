@@ -1,0 +1,246 @@
+@mixin border-shadow($width, $color, $duration, $direction){
+    position:relative;
+      &:before{
+        content:'';
+        position:absolute;
+        width:calc(100% + #{$width * 2});
+        height:calc(100% + #{$width * 2});
+        top:calc(#{$width}/-1);
+        left:calc(#{$width}/-1);
+        background:linear-gradient(to right, $color 0%, $color 100%), linear-gradient(to top, $color 50%, transparent 50%), linear-gradient(to top, $color 50%, transparent 50%), linear-gradient(to right, $color 0%, $color 100%), linear-gradient(to left, $color 0%, $color 100%);
+        background-size:100% $width, $width 200%, $width 200%, 0% $width, 0% $width;
+        background-position:50% 100%, 0% 0%, 100% 0%, 100% 0%, 0% 0%;
+        background-repeat:no-repeat, no-repeat;
+        transition:transform $duration ease-in-out, background-position $duration ease-in-out, background-size $duration ease-in-out;
+        transform:scaleX(0) rotate(180deg * $direction);
+        transition-delay:$duration*2, $duration, 0s;
+      }
+
+      &:hover{
+        &::before{
+          background-size:200% $width, $width 400%, $width 400%, 55% $width, 55% $width;
+          background-position:50% 100%, 0% 100%, 100% 100%, 100% 0%, 0% 0%;
+          transform:scaleX(1) rotate(180deg * $direction);
+          transition-delay:0s, $duration, $duration*2;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+        }
+    }
+}
+
+
+
+.intro {
+    background-color: $color-primary;
+
+    &-banner {
+        min-height: 100vh;
+        display: flex;
+    }
+
+    &-title {
+        color: $color-white;
+        font-size: 5em;
+        font-weight: 400;
+    }
+
+    &-subtitle {
+        color: $color-grey;
+        font-weight: 300;
+        line-height: 140%;
+        font-size: 2.8em;
+    }
+
+    &-img {
+        border-radius: 5%;
+        @media screen and (min-width: 1200px) {
+            height: 85%;
+        }
+    }
+
+    .scroll-down {
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        text-transform: uppercase;
+        transition: all 0.5s;
+        color: $color-grey;
+    
+        &.is-hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+    
+        &::after {
+            content: '';
+            display: block;
+            margin: 3px auto 0;
+            width: 1px;
+            height: 60px;
+            background: $color-grey;
+            transform-origin: bottom;
+            animation: pulse 3.5s infinite linear;
+          }
+      }
+    
+      @keyframes pulse {
+        0% {
+          transform: scaleY(1);
+        }
+        50% {
+          transform: scaleY(0.65);
+        }
+        100% {
+          transform: scaleY(1);
+        }
+      }
+
+    @media screen and (max-width: 992px) {
+        .intro {            
+            &-title {
+                font-size: 2.5em;        
+            }        
+            &-subtitle {
+                font-size: 1.6em;
+            }
+            &-golast {
+                order: 1;
+            }   
+
+        }
+    }
+
+    @media screen and (min-width: 993px) and (max-width: 1199px) {
+    
+        .intro {        
+            &-title {
+                font-size: 4em;
+            }
+            &-subtitle {
+                font-size: 2.4em;
+            }                  
+
+        }
+    }
+}
+
+.services {
+    min-height: 100vh;
+
+    &-title {
+        font-size: 2em;
+        font-weight: 500;
+        color: $color-primary;
+    }
+
+    &-subtitle {
+        font-size: 1.5em;
+        color: $color-primary;
+        font-weight: 400;
+    }
+
+    &-description {
+        font-size: 1.2em;        
+    }
+
+    &-card {
+        @media screen and (min-width: 1200px) {
+            border: 2px solid $color-light-grey;
+            margin: 0 10px;    
+            background-color: $color-light-grey;        
+            @include border-shadow(2px, $color-grey, 0.4s, 1);           
+        }        
+    }
+   
+    @media screen and (max-width: 992px) {
+        .services {            
+            &-texts {
+            font-size: 10px;     
+            padding-top: 20px;
+        }    
+            &-texts::after {
+                content: ""; 
+                display: inline-block; 
+                width: 5%;
+                margin-bottom: 8px;    
+                border-bottom: 1px solid $color-secondary; 
+            }
+            &-img {
+                width: 60%;                
+            }
+        }
+    }
+
+    @media screen and (min-width: 993px) and (max-width: 1199px) {
+        .services {
+            &-texts {
+            font-size: 14px;
+            }
+            &-texts::after {
+                content: ""; 
+                display: inline-block; 
+                width: 5%;
+                margin-bottom: 8px;    
+                border-bottom: 1px solid $color-secondary; 
+            }
+            &-img {
+                width: 70%;                
+            }
+        }
+    }   
+}
+
+.project {
+    min-height: 52vh;
+
+    &-first-bg {
+        background-color: $color-light-grey;
+    }
+
+    &-title {
+        color: $color-primary;
+        font-weight: 500;
+    }
+    &-featured {
+        border-bottom: 1px solid $color-grey;
+        color: $color-grey;
+        padding-bottom: 15px;
+        font-size: 1.3em;
+        
+        &--end {
+            text-align: end;
+        }
+    }
+
+    &-info {
+        padding-top: 50px;
+    }
+    
+    &-img {        
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;   
+    }
+
+    @media screen and (max-width: 992px) {
+        .project { 
+            &-featured {
+                font-size: 1.1em;
+                text-align: center;
+                margin-top: 20px;               
+            }
+            &-img {
+                margin-bottom: 20px;                
+            }
+            &-golast {
+                order: 1;
+            }
+        }
+    }
+    @media screen and (min-width: 993px) and (max-width: 1199px) {
+        .project {
+            &-featured {
+                font-size: 1.3em;               
+            }
+        }       
+    }
+}
+
+  

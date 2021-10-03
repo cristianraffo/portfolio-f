@@ -1,0 +1,168 @@
+.about {
+    background: $color-primary;
+
+    &-banner {
+        display: flex;
+        height: 60vh;   
+    }
+
+    &-title {
+        color: $color-white;
+        font-size: 5em;
+        font-weight: 400;
+    }
+
+    @media screen and (max-width: 767px) {
+        .about-title {
+            font-size: 3em;
+        }
+    }
+}
+
+.me {           
+    min-height: 40vh;
+
+    &-banner {        
+        margin-top: 40px;
+    }
+    
+    &-info {        
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+   
+    &-title {
+        font-size: 1.8em;
+        color: $color-dark-grey;
+        font-weight: 500;     
+    }
+
+    &-description {
+        color: $color-grey;
+        font-weight: 400;
+        font-size: 1.3em;        
+    }
+}
+
+.images {
+    position: relative;
+    overflow: hidden;    
+
+    &-1 {
+      transition: transform .8s;
+    }  
+    &:hover &-1 {
+      transform: scale(1.2);
+    }  
+    &-2, &-3 {
+      position: absolute;
+      top: 0;
+      z-index: 3;
+      filter: saturate(0);
+      transition: transform 1.6s;
+    }  
+    &-2 {
+      left: 0;
+      clip-path: polygon(0 0, 50% 0, 50% 100%, 0% 100%);
+    }  
+    &-3 {
+      right: 0;
+      clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+    }  
+    &:hover {
+      .images-2 {
+        transform: translateX(-700px) skewX(40deg);
+      }  
+      .images-3 {
+        transform: translateX(700px) skewX(-40deg);
+      }
+    }
+    }
+
+    @media screen and (max-width: 767px) {
+        .me {
+            &-title {
+                font-size: 1.4em;
+            }    
+            &-description {
+                font-size: 1em;            
+            }                
+        }        
+        .books {
+            &-recommended {
+                text-align: center;
+            }
+        }
+    }
+   
+
+    @media screen and (min-width: 768px) and (max-width: 1199px) {
+        .me {
+            &-title {
+                font-size: 1.6em;
+            }
+    
+            &-description {
+                font-size: 1.2em;           
+            }
+        }
+    }
+
+
+.books {    
+    &-recommended {
+        color: $color-grey;
+        font-weight: 500;
+        font-size: 1.1em;
+        border-bottom: 1px solid $color-grey;
+        margin-top: 150px;
+    }
+
+    &-img {
+        margin-top: 50px;
+        width: 50%;
+        height: auto;
+    }
+
+    &-title {
+        color: $color-primary;
+        font-weight: 400;
+        margin: 0;
+    }
+
+    @media screen and (max-width: 992px) {
+        .books {
+            &-title {
+                text-align: center;
+                font-size: 1em;
+            }
+            &-img {
+                width: 40%;
+            }    
+            &-author {
+                font-size: 0.8em;
+            }
+        }
+    }
+}
+
+.work-with {
+    justify-content: center;
+    text-align: center; 
+    margin-top: 30px;
+
+    &-title {
+        font-size: 1.8em;
+        color: $color-primary;
+        font-weight: 500;     
+    }
+
+    &-description {
+        font-size: 1.4em;
+        color: $color-primary;
+    }
+}
+
+
+
